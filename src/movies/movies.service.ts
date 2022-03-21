@@ -8,6 +8,7 @@ export class MoviesService {
     private movies: Movie[] = [];
 
     getAll(): Movie[] {
+        console.log('run getAll');
         return this.movies;
     }
 
@@ -26,10 +27,13 @@ export class MoviesService {
     }
 
     create(movieData: CreateMovieDto) {
+        console.log('run create');
         this.movies.push({
             id: this.movies.length + 1,
             ...movieData,
         });
+
+        return this.movies;
     }
 
     update(id: number, updateData: UpdateMovieDto) {
