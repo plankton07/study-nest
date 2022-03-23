@@ -4,9 +4,25 @@ import { AppController } from './app.controller';
 import { AppMiddleware } from './app.middleware';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { AppInterceptor } from './app.interceptor';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from './user/user.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 @Module({
-    imports: [MoviesModule],
+    imports: [
+        ConfigModule.forRoot(),
+        MoviesModule,
+        UserModule,
+        TypeOrmModule.forRoot(),
+        GraphQLModule.forRoot<ApolloDriverConfig>({
+            driver: ApolloDriver,
+            autoSchemaFile: true,
+            debug: true,
+            playground: true,
+        }),
+    ],
     controllers: [AppController],
     providers: [
         {

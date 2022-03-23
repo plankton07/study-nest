@@ -24,8 +24,8 @@ export class AppInterceptor<T> implements NestInterceptor<T, Response<T>> {
                 console.log(
                     `AppInterceptor Response: ${JSON.stringify(content)}`,
                 );
-                content.ErrorMessage = 'AppInterceptor Message';
-                content.Data.Uid = 1234;
+                // content.ErrorMessage = 'AppInterceptor Message';
+                // content.Data.Uid = 1234;
                 console.log(
                     `AppInterceptor Response: ${JSON.stringify(content)}`,
                 );
